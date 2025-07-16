@@ -1,0 +1,18 @@
+MOD = 10**9 + 7
+
+n = int(input())
+a = list(map(int, input().split()))
+
+paired = [(val, idx) for idx, val in enumerate(a)]
+paired_sorted = sorted(paired, key=lambda x: x[0])
+
+last_occurrence = {}
+for i, (val, idx) in enumerate(paired_sorted):
+    last_occurrence[val] = i
+
+measurement = 0
+for i, val in enumerate(a):
+    sanity = i + last_occurrence[val]
+    measurement = (measurement + sanity) % MOD
+
+print(measurement)
