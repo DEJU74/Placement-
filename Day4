@@ -1,0 +1,15 @@
+CREATE TABLE Employee (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    salary INT
+);
+INSERT INTO Employee (id, name, salary) VALUES
+(1, 'Alice', 5000),
+(2, 'Bob', 7000),
+(3, 'Charlie', 6000),
+(4, 'David', 7000),
+(5, 'Eve', 4000);
+SELECT * FROM Employee;
+SELECT MAX(salary) AS SecondHighestSalary
+FROM Employee
+WHERE salary < (SELECT MAX(salary) FROM Employee);
